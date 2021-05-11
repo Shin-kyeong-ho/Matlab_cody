@@ -1,12 +1,3 @@
-%% 연습문제 1
-
-function y = duplicate_n( x, n )
-a = repmat(x,n,1);
-y = reshape(a,1,[]);
-end
-
-%% 연습문제 2
-
 function y = oct2dec(x)
 x=str2num(x);
 i=1;
