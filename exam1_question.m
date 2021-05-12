@@ -69,6 +69,32 @@ for i = 1 : n
 %일단 피봇느낌으로 푸는것은 아님
 %값을 땡겨오는 방법은 없을까..?
 
+clc; clear;
+x = [2 5 4 5 4];
+did_you_find = 0;
+for n = 1 : length(x)
+    C = nchoosek(x,n)'
+    sum_C = sum(C)
+    find_sum = find(sum_C == sum(x)/2)
+    if (find_sum ~= 0)
+        C_1=C(:,find_sum)
+        C_2=C_1(:,1) % 많은 것들 중 첫 열만 가져오기
+        for i = 1 : n
+            if (len <= length(find(x==C_2(i)))
+            xi(i) = find(x==C_2(i))
+            did_you_find = 1;
+        end
+    end
+    if did_you_find == 1
+        break
+    end
+end
+if did_you_find == 1
+    xi
+else
+    fprintf('반절이 되는 원소들이 없습니다.\n')
+end
+
 
 
 
