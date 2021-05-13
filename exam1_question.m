@@ -119,5 +119,27 @@ else
 end
 end
 
+%% 9번 이진수 표현의 1 갯수 찾기
+
+function y = CountOnes(x)
+for j = 1 : length(x)
+    D=x(j);
+    A= str2num(dec2bin(D,8));
+    i=0;
+    while(true)
+        i = i+1;
+        b = A/10^(i);
+        d = (b-floor(b));
+        c(i) = (d)*10^(1);
+        A=A-c(i)*10^(i-1);
+        if A == 0
+            break
+        end
+    end
+    c=fliplr(c);
+    y(j)=round(sum(c))
+end
+
+end
 
 
