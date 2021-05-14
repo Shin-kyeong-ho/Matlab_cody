@@ -54,4 +54,25 @@ end
 end
 
 
-%%
+%% 2번 삼각형의 외접원
+
+
+
+
+%% 3번 이웃간에 가장 먼 거리 찾기
+
+function dmax = maxDistance( M )
+for i = 1 : length(M).^2
+[now_m, now_n] = find(M==M(i));
+if M(i) ~= length(M).^2
+[m,n] = find(M==M(i)+1);
+geri(i) = abs(now_m-m)+abs(now_n-n);
+else
+    geri(i) = 0;
+end
+end
+dmax = max(geri);
+end
+
+
+
