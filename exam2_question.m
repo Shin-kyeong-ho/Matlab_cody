@@ -159,4 +159,48 @@ unique(cellstr(char(perm)))
 
 end
 
-%% 8번
+%% 8번 방어진지 구축하기
+
+function c = SquareWall( n, t )
+b=ones(n,n)
+b(1,:)=0
+b(end,:)=0
+b(:,1)=0
+b(:,end)=0
+Wall = double(~b)*43
+
+for i = 2 : t
+n=n-2
+b=ones(n,n)
+b(1,:)=0
+b(end,:)=0
+b(:,1)=0
+b(:,end)=0
+wall = double(~b)*43
+Wall(i:end+(1-i),i:end+(1-i))=wall;
+end
+Wall(find(Wall==0))=32;
+c=char(Wall)
+end
+
+%% 9번 소인수 분해하여 더하기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
