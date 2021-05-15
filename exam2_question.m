@@ -57,6 +57,49 @@ end
 %% 2번 삼각형의 외접원
 
 
+close all;clc;clear;
+T=[-1 0;0 1;1 0]
+p=[-1.5 0]
+
+minx= min([T(1,1) T(2,1) T(3,1)])
+maxy = max([T(1,2) T(2,2) T(3,2)])
+x = [minx:maxy] % 세개 좌표중 x좌표의 최소는 -1 최대는 +1
+
+dot1=T(1,:)
+dot2=T(2,:)
+dot3=T(3,:)
+
+giulgi1=(dot2(2)-dot1(2))/(dot2(1)-dot1(1))
+rot90_giulgi1 = tan(atan(giulgi1)+(pi/2)) %90도 회전
+y1 = rot90_giulgi1*(x-((dot2(1)+dot1(1))/2))+((dot2(2)+dot1(2))/2)
+
+giulgi2=(dot3(2)-dot2(2))/(dot3(1)-dot2(1))
+rot90_giulgi2 = tan(atan(giulgi2)+(pi/2)) % 90도 회전
+y2 = rot90_giulgi2*(x-((dot3(1)+dot2(1))/2))+((dot3(2)+dot2(2))/2)
+y1=round(y1)
+y2=round(y2)
+
+mid_x=x(y1==y2)
+mid_y=y1(y1==y2)
+mid_point=[mid_x mid_y]
+r=norm(mid_point-dot1) % 중점과 점1 사이거리(=반지름)
+
+if norm(mid_point-p)<r
+    f = true
+else
+    f = false
+end
+
+plot(x,y1)
+hold on
+plot(x,y2)
+
+
+grid on
+
+
+
+
 
 
 %% 3번 이웃간에 가장 먼 거리 찾기
