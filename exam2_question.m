@@ -184,9 +184,32 @@ c=char(Wall)
 end
 
 %% 9번 소인수 분해하여 더하기
+function s = sumOfPrimeFactors( n )
+while true
+a = factor(n)
+b = unique(a)
+c = sum(b)
+if length(factor(c)) == 1
+    s = c % 출력!
+    break
+else
+    n = c
+end
+end
+end
 
+%% 10번 한글로 이진수 나타내기
 
-
+function T = toKorBinary( d )
+b = dec2bin(d)
+% 49는 1, 48은 0
+dou = double(b)
+double('일') %51068
+double('영') %50689
+dou(find(dou==49))=51068
+dou(find(dou==48))=50689
+T = char(dou)
+end
 
 
 
