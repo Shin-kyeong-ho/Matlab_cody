@@ -125,4 +125,38 @@ end
 n
 end
 
-%%
+%% 6번 2x2를 더해서 소수가 되는 곳 찾기
+
+function n = nPrimeSum( D )
+n = 0;
+[M,N] = size(D)
+for i = 1 : M-1
+    for j = 1 : N-1
+        (D(i:i+1,j:j+1))
+        sum(D(i:i+1,j:j+1))
+        if isprime(sum(sum(D(i:i+1,j:j+1)))) == 1
+            n=n+1;
+        end
+    end
+end
+n
+end
+
+%% 7번 문자열에서 뽑아내는 경우의 수
+
+function n = nSelectWord( x, k )
+n=0
+a = double(x)
+b = nchoosek(a,k)
+c = [char(b)]
+perm = []
+[M,N]=size(c)
+for i = 1 : M
+perm = [perm; perms(double(c(i,:)))]
+end
+n=length(unique(cellstr(char(perm))))
+unique(cellstr(char(perm)))
+
+end
+
+%% 8번
