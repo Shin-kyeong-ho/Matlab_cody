@@ -44,7 +44,21 @@ end
 
 
 %% 5번 순환시프트
+function k = FindCircShiftValues (m, n)
+a = dec2bin(m)
+b = dec2bin(n)
 
+A=[ double('0')*ones(1,8-length(a)) a]
+B=[ double('0')*ones(1,8-length(b)) b]
+new_A = A;
+k=[]
+for i = 1 : 7
+    new_A = circshift(new_A,[0 1]);
+    if new_A == B
+        k=[k i]
+    end
+end
+end
 
 %% 6번 합의 반절되는 원소 찾기 -ing
 
