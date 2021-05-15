@@ -74,5 +74,55 @@ end
 dmax = max(geri);
 end
 
+%% 4번 벽으로 둘러싸인 공간 찾기
 
+function N = nHoles( M )
+[M_m,M_n] = size(M)
+indoor_M = M(2:M_m-1,2:M_n-1)
+[m,n] = find(indoor_M==0)
+m=m+1 %전체에서 바라본 인도어의 위치
+n=n+1 % //
+N=0
+for i = 1 : length(m)
+    if M(m(i),n(i)+1)+M(m(i),n(i)-1)+M(m(i)+1,n(i))+M(m(i)-1,n(i))==4
+        % 동서남북 모두 1일 경우, 합했을때 4
+        N = N+1
+    end
+end
+N
+end
 
+%% 5번 둔각갖는 삼각형 갯수 구하기
+
+function n = nObtuseTriangles( T )
+[m,N]=size(T);
+n=0;
+for i = 1 : N
+TT=T(:,i)
+T_bitbyeon = max(TT);
+location_bitbyeon = find(TT==T_bitbyeon); %빗변의 위치
+numberOfbit = length(location_bitbyeon); %빗변의 개수
+
+if numberOfbit == 2 || numberOfbit == 3
+    fprintf("%d열은 예각삼각형\n",i)
+else
+    if T_bitbyeon < sum(TT(find(TT~=T_bitbyeon)))
+        if T_bitbyeon.^2>sum(TT(find(TT~=T_bitbyeon)).^2)
+            fprintf("%d열은 둔각삼각형\n",i)
+            n=n+1;
+        end
+        if T_bitbyeon.^2==sum(TT(find(TT~=T_bitbyeon)).^2)
+            fprintf("%d열은 직각삼각형\n",i)
+        end
+        if T_bitbyeon.^2<sum(TT(find(TT~=T_bitbyeon)).^2)
+            fprintf("%d열은 예각삼각형\n",i)
+        end
+    else
+        fprintf("%d열 this is not 삼각형\n",i)
+    end
+end
+end
+n
+end
+
+%%
