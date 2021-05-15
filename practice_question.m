@@ -25,6 +25,7 @@ y=num2str(sum(b));
 end
 
 %% 연습문제 3
+
 function answer = checkerboard(n)
   for i = 1 : n        
     if mod(i,2) == 1
@@ -48,9 +49,8 @@ function answer = checkerboard(n)
         end
     end
   end
-answer=a;
+answer=a
 end
-
 %% 연습문제 4
 function y = vec2int(x)
   size = length(x);
@@ -124,7 +124,7 @@ if isequal(x,x_sort)
         end
     else
         if x(1) == 0
-            tf = true;
+            tf = false;
         end
     end
 end
