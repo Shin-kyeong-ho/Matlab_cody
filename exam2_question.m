@@ -56,47 +56,61 @@ end
 
 %% 2번 삼각형의 외접원
 
+function f = isInside( T, p )
+%1번점-2번점 기울기
+P =polyfit([T(1,1) T(2,1)], [T(1,2) T(2,2)], 1)
+%1번점-3번점 기울기
+p2 =polyfit([T(1,1) T(3,1)], [T(1,2) T(3,2)], 1)
+%2번점-3번점 기울기
+p3 =polyfit([T(2,1) T(3,1)], [T(2,2) T(3,2)], 1)
 
-close all;clc;clear;
-T=[-1 0;0 1;1 0]
-p=[-1.5 0]
+%1번점-2번점 중점
+center1X = (T(1,1)+T(2,1))/2
+center1Y = (T(1,2)+T(2,2))/2
+%1번점-2번점 중점
+center2X = (T(1,1)+T(3,1))/2
+center2Y = (T(1,2)+T(3,2))/2
+%1번점-2번점 중점
+center3X = (T(2,1)+T(3,1))/2
+center3Y = (T(2,2)+T(3,2))/2
 
-minx= min([T(1,1) T(2,1) T(3,1)])
-maxy = max([T(1,2) T(2,2) T(3,2)])
-x = [minx:maxy] % 세개 좌표중 x좌표의 최소는 -1 최대는 +1
+if P(1) ~= 0 && p2(1) ~= 0 && tan(atan(P(1))+(pi/2)) ~=0 && tan(atan(p2(1))+(pi/2)) ~=0
+    disp('1')
+    rot1(1) = tan(atan(P(1))+(pi/2))
+    rot2(1) = tan(atan(p2(1))+(pi/2))
+    rot1(2) = -1*(rot1(1)*center1X-center1Y)
+    rot2(2) = -1*(rot2(1)*center2X-center2Y)
+    realpoint = rot1-rot2
+    X = roots(realpoint)
+    Y = polyval(rot1,X)
+elseif (P(1) ~= 0 && p3(1) ~= 0) && tan(atan(P(1))+(pi/2)) ~=0 && tan(atan(p3(1))+(pi/2)) ~=0
+    disp('2')
+    rot1(1) = tan(atan(P(1))+(pi/2))
+    rot2(1) = tan(atan(p3(1))+(pi/2))
+    rot1(2) = -1*(rot1(1)*center1X-center1Y)
+    rot2(2) = -1*(rot2(1)*center3X-center3Y)
+    realpoint = rot1-rot2
+    X = roots(realpoint)
+    Y = polyval(rot1,X)
+else
+    disp('3')
+    rot1(1) = tan(atan(p2(1))+(pi/2))
+    rot2(1) = tan(atan(p3(1))+(pi/2))
+    rot1(2) = -1*(rot1(1)*center2X-center2Y)
+    rot2(2) = -1*(rot2(1)*center3X-center3Y)
+    realpoint = rot1-rot2
+    X = roots(realpoint)
+    Y = polyval(rot1,X)
+end
 
-dot1=T(1,:)
-dot2=T(2,:)
-dot3=T(3,:)
-
-giulgi1=(dot2(2)-dot1(2))/(dot2(1)-dot1(1))
-rot90_giulgi1 = tan(atan(giulgi1)+(pi/2)) %90도 회전
-y1 = rot90_giulgi1*(x-((dot2(1)+dot1(1))/2))+((dot2(2)+dot1(2))/2)
-
-giulgi2=(dot3(2)-dot2(2))/(dot3(1)-dot2(1))
-rot90_giulgi2 = tan(atan(giulgi2)+(pi/2)) % 90도 회전
-y2 = rot90_giulgi2*(x-((dot3(1)+dot2(1))/2))+((dot3(2)+dot2(2))/2)
-y1=round(y1)
-y2=round(y2)
-
-mid_x=x(y1==y2)
-mid_y=y1(y1==y2)
-mid_point=[mid_x mid_y]
-r=norm(mid_point-dot1) % 중점과 점1 사이거리(=반지름)
-
-if norm(mid_point-p)<r
+circleP = [X Y] % 원점
+r = norm(circleP-T(1,:)) %반지름
+if norm(circleP-p)<r
     f = true
 else
     f = false
 end
-
-plot(x,y1)
-hold on
-plot(x,y2)
-
-
-grid on
-
+end
 
 
 
