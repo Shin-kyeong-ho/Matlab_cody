@@ -48,6 +48,18 @@ yaksu=unique(c)
 n=length(yaksu)
 end
 
+%% 컬러 사각형 만들기
+close all; clc; clear;
+w = 100
+rgb =[255 0 0]
+C = zeros(w, w, 3, 'uint8');
+c=[255, 0, 0]
+C(:,:,1)=rgb(1)
+C(:,:,2)=rgb(2)
+C(:,:,3)=rgb(3)
+imshow(C)
+
+%%
 
 
 
