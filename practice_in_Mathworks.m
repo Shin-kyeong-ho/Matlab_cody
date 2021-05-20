@@ -21,11 +21,19 @@ else
 end
 
 %% Problem 21. Return the 3n+1 sequence for n
-
-
+clc;clear;
 n = 13
 
+c(1) = n
 i = 1;
+while c(i) ~= 1
+    i = i+1
+    if mod(c(i-1),2)==1 %홀수이면
+        c(i) = 3*c(i-1)+1
+    else
+        c(i) = c(i-1)/2
+    end
+end
 
 
 
