@@ -35,6 +35,20 @@ while c(i) ~= 1
     end
 end
 
+%% Problem 9. Who Has the Most Change?
+clc;clear;
+
+a=[ 0 1 2 1; 0 2 1 1];
+[m,n] = size(a)
+for i = 1 : m
+    quarter=a(i,1)*0.25
+    nickel=a(i,2)*0.05
+    dime=a(i,3)*0.10
+    penny=a(i,4)*0.01
+    b(i)=quarter+dime+nickel+penny
+end
+b=find(b==max(b))
+
 
 
 
