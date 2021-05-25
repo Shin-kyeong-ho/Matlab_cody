@@ -94,6 +94,58 @@ A=[];
  end
  y=max(T)
 
+%% Problem 60. The Goldbach Conjecture
+
+n=200;
+a=primes(n)
+b=nchoosek(a,2)'
+find_group=find(sum(b)==n)
+c=b(:,find_group)'
+p1=c(1,1)
+p2=c(1,2)
+
+%% Problem 11. Back and Forth Rows
+
+clc;clear;
+n = 4;
+k = 0;
+a = [];
+for i = 1 : n
+    for j = 1 : n
+        k = k + 1;
+        b(1,j) = k;
+    end
+    if mod(i,2)==0
+        b=fliplr(b)
+    end
+    a=[a;b]
+end
+
+%% Problem 29. Nearest Numbers
+
+clc;clear;
+a = [2 5 3 10 0 -3.1];
+a = [30 46 16 -46 35 44 18 26 25 -10];
+
+b = unique(a)
+c = nchoosek(a,2)'
+d = abs(c(1,:)-c(2,:))
+index = find(d==min(d))
+e = c(:,index)
+if e(1)~=e(2)
+    f(1)=find(a==e(1))
+    f(2)=find(a==e(2))
+else
+    f=find(a==e(1))
+    f=sort(f)
+end
+index1=f(1)
+index2=f(2)
+
+
+
+
+
 
 
 
