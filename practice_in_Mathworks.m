@@ -166,10 +166,26 @@ A=d
 
 
 
+%% Problem 27. Pangrams!
 
+clc; clear;
+s='The quick brown fox jumps over a lazy dogs'
 
-
-
+a=double(s);
+tf = true;
+for i = 65 : 90
+    b=find(a==i)
+    c=find(a==i+32)
+    char(i)
+    i
+    if isempty(b)
+        if isempty(c)
+            tf = false;
+            break
+        end
+    end
+end
+tf
 
 
 
