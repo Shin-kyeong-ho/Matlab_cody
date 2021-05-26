@@ -143,7 +143,26 @@ index1=f(1)
 index2=f(2)
 
 
+%% Problem 34. Binary numbers
 
+clc;clear;
+a='110'
+
+n=4
+
+k=n
+a=[1:n]
+d=zeros(1,n)
+for i =1 : n
+c=nchoosek(a,i)
+[m,n]=size(c)
+    for j = 1 : m
+        b=zeros(1,k)
+        b(c(j,:))=1
+        d=[d; b]
+    end
+end
+A=d
 
 
 
