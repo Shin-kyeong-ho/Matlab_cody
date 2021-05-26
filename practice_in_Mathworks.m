@@ -188,10 +188,102 @@ end
 tf
 
 
+%% Problem 94. Target sorting
+
+clc; clear;
+a = [1 2 4 8 17];
+t = 12;
+
+[z,x] = sort(abs(a-t),'descend');
+a(x)
 
 
+%% Problem 67. Find common elements in matrix rows
 
+clc; clear;
+ A=[1 2 3 5
+     9 2 5 9
+     3 2 5 9
+     1 2 1 5
+     5 1 3 2]
+ C=[]
+ [a_m, a_n]=size(A)
+ B=unique(A)'
+ 
+for i = 1 : length(B)
+[m,n]=find(A==B(i))
+if size(unique(m)) == [a_m, 1]
+    if unique(m) == [1:a_m]'
+        B(i)
+        C=[C B(i)]
+    end
+end
+end
 
+%% Problem 58. Tic Tac Toe FTW
+
+clc; clear;
+a = [ 1  0  1
+      0 -1  0
+     -1 -1  1];
+m=find(a==0)
+b=[];
+for i = 1 : length(m)
+if m(i) >=1 && m(i) <= 3
+    if sum(a(:,1))==2
+      b=[b m(i)]
+    end
+end
+if m(i) >=4 && m(i) <= 6
+    if sum(a(:,2))==2
+      b=[b m(i)]
+    end
+end
+if m(i) >=7 && m(i) <= 9
+    if sum(a(:,3))==2
+      b=[b m(i)]
+    end
+end
+if m(i) ==1 || m(i) ==4 || m(i) ==7
+    if sum(a(1,:))==2
+      b=[b m(i)]
+    end
+end
+if m(i) ==2 || m(i) ==5 || m(i) ==8
+    if sum(a(2,:))==2
+      b=[b m(i)]
+    end
+end
+if m(i) ==3 || m(i) ==6 || m(i) ==9
+    if sum(a(3,:))==2
+      b=[b m(i)]
+    end
+end
+end
+for i = 1 : length(m)
+    if m(i) == 1 || m(i) == 9
+        if sum(diag(a))==2
+            b=[b m(i)]
+        end
+    end
+    if m(i) == 7 || m(i) == 3
+        if sum(diag(fliplr(a)))==2
+            b=[b m(i)]
+        end
+    end
+    if m(i) == 5
+        if sum(diag(a))==2
+            b=[b m(i)]
+        end
+        if sum(diag(fliplr(a)))==2
+            b=[b m(i)]
+        end
+    end
+end
+
+if isempty(b)
+    b=0
+end
 
 
 
