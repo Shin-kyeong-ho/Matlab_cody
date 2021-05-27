@@ -286,7 +286,21 @@ if isempty(b)
 end
 
 
+%% Problem 19. Swap the first and last columns
 
+A =  [ 12  4   7;5  1   4 ];
+
+[m,n]=size(A)
+tmp=A(1,1)
+A(1,1)=A(1,end)
+A(1,end)=tmp
+B=A
+if m>1
+tmp=A(end,1)
+A(end,1)=A(end,end)
+A(end,end)=tmp
+end
+B=A
 
 
 
